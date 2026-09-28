@@ -1,114 +1,75 @@
-# GuapClock Desktop Beta
+# GuapClock
 
-GuapClock is a free desktop beta for producers testing a studio booth-time clock. It is built for rooms where booth time needs to be obvious, visible, and hard to dispute.
+A Windows desktop session timer and billing-record tool built for recording studios. GuapClock makes booth time visible, keeps artist and producer records organized, and creates a plain-text invoice record for every session.
 
-The app starts each session by locking the artist and producer names, runs a large room-readable timer, creates an artist session folder, and writes a plain-text invoice record.
-
-This beta is free for producer testing. Producers who contribute useful feedback, testing notes, or improvements during the beta will be considered for a free license if the app launches commercially.
-
-## Screenshots
-
-### Main Session Clock
-
-The main view is designed to dominate the session. The timer uses a 2001-style rack clock look with large amber LED digits so the artist, producer, and anyone across the room can see booth time clearly.
+**Status:** Public beta  
+**Platform:** Windows  
+**Built with:** Java 17 and Swing
 
 ![GuapClock main session timer](screenshots/booth-time-clock-main.png)
 
-### Invoice Panel
+## What it solves
 
-The invoice panel lets you view generated invoice text files inside the app without hunting through folders. It can be opened from `Invoice > Show invoice panel`.
+Studio time can become difficult to track when a session is moving quickly. GuapClock gives everyone in the room one clear timer and automatically connects the session to the correct artist, producer, folders, and invoice record.
 
-![GuapClock invoice panel](screenshots/booth-time-clock-invoices.png)
+## Features
 
-## What It Does
+- Locks the artist and producer names when a session begins.
+- Displays a large room-readable timer with amber LED styling.
+- Creates an organized folder structure for each recording session.
+- Writes a plain-text invoice record with start, stop, and elapsed time.
+- Includes an in-app invoice viewer.
+- Supports a custom invoice destination.
+- Includes an optional analog clock view.
 
-- Prompts for artist and producer names before a session can start.
-- Locks those names for the active session.
-- Displays a large 2001-style rack timer with amber LED digits.
-- Offers an analog clock option from the View menu.
-- Creates artist folders under the default music session folder.
-- Creates invoice text files for billing records.
-- Lets you view invoice files inside the app.
-- Lets you change the invoice destination folder.
+## Try the beta
 
-## Beta Download
+1. Download `release/guapclock-desktop-beta.zip`.
+2. Extract the ZIP file.
+3. Open the `app` folder.
+4. Double-click `RUN-BOOTH-TIME-CLOCK.bat`.
 
-The desktop beta package is in:
+Java 17 or newer is required. [Download Eclipse Temurin](https://adoptium.net/temurin/releases/) if Java is not already installed.
 
-```text
-release/guapclock-desktop-beta.zip
-```
+## Session workflow
 
-Unzip it, open the `app` folder, then run:
+1. Select **SESSION IN**.
+2. Enter the artist and producer names.
+3. Keep the timer visible during the session.
+4. Select **SESSION OUT** when the session ends.
+5. Review the generated session folder and invoice record.
 
-```text
-RUN-BOOTH-TIME-CLOCK.bat
-```
-
-## Quick Start
-
-1. Open `app`.
-2. Double-click `RUN-BOOTH-TIME-CLOCK.bat`.
-3. Click `SESSION IN`.
-4. Enter the artist and producer names.
-5. Let the timer run during the booth session.
-6. Click `SESSION OUT` when the session ends.
-
-## Session Workflow
-
-When `SESSION IN` is pressed, GuapClock asks for the artist name and producer name. Those names become locked for the session, so the invoice and folder records stay tied to the correct people.
-
-During the session, the large LED clock tracks booth time. When `SESSION OUT` is pressed, the invoice file is updated with the stop time and total booth time.
-
-## Default Folder Behavior
-
-By default, new sessions are created under:
+By default, sessions are stored under:
 
 ```text
 %USERPROFILE%\Music\Booth Time Sessions
 ```
 
-Each session creates:
+Each session uses this structure:
 
 ```text
-Artist Name\
-  20260526-190000-ProducerName\
-    Audio\
-    Projects\
-    Exports\
-    Invoices\
+Artist Name/
+  20260526-190000-ProducerName/
+    Audio/
+    Projects/
+    Exports/
+    Invoices/
     SESSION-README.txt
 ```
 
-Invoice files are saved in the session's `Invoices` folder unless changed from the Invoice menu.
+## Invoice panel
 
-## Menus
+Generated invoice files can be reviewed inside the app from **Invoice > Show invoice panel**.
 
-- `Folder`: change the default music session folder.
-- `View`: toggle the analog clock.
-- `Invoice`: view invoice status, change invoice destination, and show the invoice panel.
+![GuapClock invoice panel](screenshots/booth-time-clock-invoices.png)
 
-## What To Test
+## Beta feedback
 
-- Is the timer readable from across the room?
-- Does `SESSION IN` make sense at the start of a studio session?
-- Are artist and producer names locked clearly enough?
-- Are the generated artist/session folders useful?
-- Does the invoice text file have the right information for billing?
-- Should the invoice include an hourly rate or flat-rate field in the next version?
+Useful feedback includes timer readability, timing accuracy, session-folder organization, invoice clarity, and the overall start/stop workflow. Do not include real client invoice data in public bug reports.
 
-## Requirements
+## Project structure
 
-Java is required. If Java is not installed, install Java 17 or newer.
-
-Recommended download:
-
-```text
-https://adoptium.net/temurin/releases/
-```
-
-## Beta Notes
-
-- This is a desktop beta, not a WordPress release.
-- Do not include real client invoice records in public bug reports.
-- Send feedback about timing accuracy, session folder behavior, invoice workflow, and booth readability.
+- `app/` — Java source, compiled beta files, and Windows launcher.
+- `release/` — downloadable beta package.
+- `screenshots/` — product screenshots.
+- `docs/` — supporting project documentation.
